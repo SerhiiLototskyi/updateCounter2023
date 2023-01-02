@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import s from './App.module.css';
+import {CounterButton} from "./counterButton/counterButton";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    let [value, setValue] = useState<number>(0)
+
+    return (
+        <div className={s.app}>
+            <div className={s.counterContainer}>
+                <div className={s.valueContainer}>
+                    <div className={value === 5 ? s.disabledValue : s.value }>{value}</div>
+                </div>
+                <div className={s.buttonsContainer}>
+                        <CounterButton name={"inc"}
+                                       onClickHandler={() => {setValue(value+1)}}
+                                       // value={value}
+                                        disabled={value === 5}
+                                       disabledValue={5}/>
+                        <CounterButton name={"reset"}
+                                       onClickHandler={() => {setValue(0)}}
+                                       disabled={value === 0}
+                                       disabledValue={0}/>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;
