@@ -1,11 +1,9 @@
 import React from 'react';
-import s from "../App.module.css";
+import s from "../counter/Counter.module.css";
 
 type CounterButtonPropsType ={
-    // value: number
-    name: string
+    title: string
     disabled?: boolean
-    disabledValue: number
     onClickHandler: () => void
     className?:string
 }
@@ -13,7 +11,7 @@ type CounterButtonPropsType ={
 export const CounterButton = (props:CounterButtonPropsType) => {
     return (
         <div>
-            <button className={props.className || s.button} disabled={props.disabled } onClick={props.onClickHandler}>{props.name}</button>
+            <button className={props.className || s.button} disabled={props.disabled } onClick={props.onClickHandler}>{props.title}</button>
         </div>
     );
 };
