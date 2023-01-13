@@ -7,8 +7,9 @@ export type CounterPropsType = {
     value: number
     maxValue: number
     startValue: number
-    setValue: (newValue: number) => void
+    setValue: () => void
     onChangingValuesStatus: boolean
+    resetValueRedux: () => void
 }
 
 export const Counter = (props: CounterPropsType) => {
@@ -23,13 +24,13 @@ export const Counter = (props: CounterPropsType) => {
             <div className={s.buttonsContainer}>
                 <CounterButton title={"inc"}
                                onClickHandler={() => {
-                                   props.setValue(props.value + 1)
+                                   props.setValue()
                                }}
                                disabled={props.onChangingValuesStatus ? true : props.value === props.maxValue}
                 />
                 <CounterButton title={"reset"}
                                onClickHandler={() => {
-                                   props.setValue(props.startValue)
+                                   props.resetValueRedux()
                                }}
                                disabled={props.onChangingValuesStatus ? true : props.value === props.startValue}
                 />
